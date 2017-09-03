@@ -1,0 +1,82 @@
+<BODY>
+    <head><script>
+        function listbox_moveacross(from,what){
+            val=(document.getElementById(what).value);
+        if(from=='s' & val!=''){
+            
+            moveRight(val);
+            
+        }
+        else{
+            if(from=='d' & val!=''){
+            
+            moveLeft(val);
+        }else{
+            
+            alert("please select a value to transfer");
+        }
+        
+        }
+        
+        
+            function moveRight(what){ //transfering value to right
+                var select=document.getElementById('d');
+                for (i=0;i<select.length;  i++) {
+                if (select.options[i].value==what) {
+                select.remove(i);  // deleting from left
+                }
+                }
+             
+                var copyTo = document.getElementById("s");
+                 var option = document.createElement('option');
+                  option.text = option.value = what;
+                copyTo.appendChild(option); // adding to right
+            }
+            
+            function moveLeft(what){ //transfering value to left
+               var select=document.getElementById('s');
+                for (i=0;i<select.length;  i++) {
+                if (select.options[i].value==what) {
+                select.remove(i); // deleting from right
+                }
+                }   
+                
+                var copyTo = document.getElementById("d");
+                var option = document.createElement('option');
+                  option.text = option.value = what;
+                  copyTo.appendChild(option); // adding to left
+            }
+        }
+        
+        </script></head>
+<table>
+<tr valign="top">
+<td>
+<SELECT id="s" size="10" multiple>
+	<OPTION value="Afghanistan">Afghanistan</OPTION>
+	<OPTION value="Bahamas">Bahamas</OPTION>
+	<OPTION value="Barbados">Barbados</OPTION>
+	<OPTION value="Belgium">Belgium</OPTION>
+	<OPTION value="Bhutan">Bhutan</OPTION>
+	<OPTION value="China">China</OPTION>
+	<OPTION value="Croatia">Croatia</OPTION>
+	<OPTION value="Denmark">Denmark</OPTION>
+	<OPTION value="France">France</OPTION>
+</SELECT>
+</td>
+<td valign="center">
+<a href="#" onclick="listbox_moveacross('d', 's')">&gt;&gt;</a>
+<br/>
+<a href="#" onclick="listbox_moveacross('s', 'd')">&lt;&lt;</a>
+
+</td>
+<td>
+<SELECT id="d" size="10" multiple>
+	<OPTION value="japan">Japan</OPTION>
+</SELECT>
+</td>
+</tr>
+</table>
+
+</BODY>
+</HTML>
